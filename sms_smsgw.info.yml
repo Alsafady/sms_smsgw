@@ -1,4 +1,4 @@
-name: SMSgw.net for SMS Framework
+name: sms_smsgw
 type: module
 description: 'Integrates SMSgw.net with SMS Framework.'
 # core: '8.x'
