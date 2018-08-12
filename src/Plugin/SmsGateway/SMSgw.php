@@ -2,13 +2,15 @@
 
 namespace Drupal\sms_smsgw\Plugin\SmsGateway;
 
-
 use Drupal\Core\Form\FormStateInterface;
+
 use Drupal\sms\Plugin\SmsGatewayPluginBase;
 
 use Drupal\sms\Message\SmsMessageInterface;
 use Drupal\sms\Message\SmsMessageResult;
 use Drupal\sms\Message\SmsDeliveryReport;
+use Drupal\sms\Message\SmsMessageResultStatus;
+use Drupal\sms\Message\SmsMessageReportStatus;
 
 
 class Twilio extends SmsGatewayPluginBase {
