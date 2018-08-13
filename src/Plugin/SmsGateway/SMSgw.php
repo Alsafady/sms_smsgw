@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
-class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
+class SMSgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
 
 
   public static function create(ContainerInterface $container, array $config, $plugin_id, $plugin_definition) {
