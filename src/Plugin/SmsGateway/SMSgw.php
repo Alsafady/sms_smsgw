@@ -2,6 +2,8 @@
 
 namespace Drupal\sms_smsgw\Plugin\SmsGateway;
 
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+
 use Drupal\Core\Form\FormStateInterface;
 
 use Drupal\sms\Plugin\SmsGatewayPluginBase;
@@ -17,14 +19,14 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
-class sms_smsgw extends SmsGatewayPluginBase {
+class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
 
 
   public function defaultConfiguration() {
     return [
       'strUserName' => '',
       'strPassword' => '',
-      'strTagName' => '',
+      'strTagName'  => '',
     ];
   }
 
@@ -61,7 +63,7 @@ class sms_smsgw extends SmsGatewayPluginBase {
       '#type'          => 'textfield',
       '#title'         => $this->t('The username or Mobile number'),
       '#default_value' => $config['strUserName'],
-      '#description'   => t('The username of your SMSgw.net account.'),
+      '#description'   => t('The username of your SMSgw.net account. Like 050....'),
       '#required'      => TRUE,
     ];
 
