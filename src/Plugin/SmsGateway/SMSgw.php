@@ -15,9 +15,10 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
+ * This plugin handles sending SMSes through most GET & POST based SMS Gateways.
  * @SmsGateway(
  *   id = "smsgw",
- *   label = @Translation("smsgw"),
+ *   label = @Translation("SMSgw Gateway"),
  *   outgoing_message_max_recipients = 1,
  *   credit_balance_available = TRUE
  *   reports_push = TRUE,
