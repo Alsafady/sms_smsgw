@@ -13,7 +13,11 @@ use Drupal\sms\Message\SmsMessageResultStatus;
 use Drupal\sms\Message\SmsMessageReportStatus;
 
 
-class Twilio extends SmsGatewayPluginBase {
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+
+class sms_smsgw extends SmsGatewayPluginBase {
 
 
   public function defaultConfiguration() {

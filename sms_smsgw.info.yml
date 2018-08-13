@@ -1,7 +1,7 @@
-name: sms_smsgw
+name: SMSgw.net For SMS Framework
 type: module
 description: 'Integrates SMSgw.net with SMS Framework.'
-# core: '8.x'
+core: '8.x'
 package: SMS Framework
 dependencies:
   - sms
