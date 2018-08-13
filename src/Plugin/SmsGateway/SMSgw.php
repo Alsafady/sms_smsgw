@@ -22,6 +22,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
 
 
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition
+    );
+  }
+
+
+
   public function defaultConfiguration() {
     return [
       'strUserName' => '',
