@@ -1,19 +1,15 @@
 <?php
-
 namespace Drupal\sms_smsgw\Plugin\SmsGateway;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-
 use Drupal\Core\Form\FormStateInterface;
-
 use Drupal\sms\Plugin\SmsGatewayPluginBase;
 
 use Drupal\sms\Message\SmsMessageInterface;
 use Drupal\sms\Message\SmsMessageResult;
-use Drupal\sms\Message\SmsDeliveryReport;
 use Drupal\sms\Message\SmsMessageResultStatus;
 use Drupal\sms\Message\SmsMessageReportStatus;
-
+use Drupal\sms\Message\SmsDeliveryReport;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -22,14 +18,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
 
 
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $config, $plugin_id, $plugin_definition) {
     return new static(
-      $configuration,
+      $config,
       $plugin_id,
       $plugin_definition
     );
   }
-
 
 
   public function defaultConfiguration() {
@@ -39,8 +34,6 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
       'strTagName'  => '',
     ];
   }
-
-
 
 
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
@@ -94,13 +87,10 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
 
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
 
-    $this->configuration['strUserName'] = trim($form_state->getValue('strUserName'));
-    $this->configuration['strPassword'] = trim($form_state->getValue('strPassword'));
-    $this->configuration['strTagName'] = $form_state->getValue('strTagName');
+    $this->$config['strUserName'] = trim($form_state->getValue('strUserName'));
+    $this->$config['strPassword'] = trim($form_state->getValue('strPassword'));
+    $this->$config['strTagName'] = $form_state->getValue('strTagName');
   }
-
-
-
 
 
   public function send(SmsMessageInterface $sms_message) {
@@ -111,10 +101,10 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
     $uri = 'http://api.smsgw.net/SendBulkSMS';
 
     $options['form_params'] = [
-      'strUserName'            => $this->configuration['strUserName'],
-      'strPassword'            => $this->configuration['strPassword'],
+      'strUserName'            => $this->$config['strUserName'],
+      'strPassword'            => $this->$config['strPassword'],
+      'strTagName'             => $this->$config['strTagName'],
       'strRecepientNumbers'    => $sms_message->getRecipients()[0],
-      'strTagName'             => $this->configuration['strTagName'],
       'strMessage'             => $sms_message->getMessage(),
 
       //'domainName'       => \Drupal::request()->getHost()
@@ -153,8 +143,5 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
 
     return $result;
   }
-
-
-
 
 }
