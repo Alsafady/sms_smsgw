@@ -82,9 +82,6 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
   }
 
 
-
-
-
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
 
     $this->$config['strUserName'] = trim($form_state->getValue('strUserName'));
@@ -106,8 +103,6 @@ class sms_smsgw extends SmsGatewayPluginBase implements ContainerFactoryPluginIn
       'strTagName'             => $this->$config['strTagName'],
       'strRecepientNumbers'    => $sms_message->getRecipients()[0],
       'strMessage'             => $sms_message->getMessage(),
-
-      //'domainName'       => \Drupal::request()->getHost()
     ];
 
     try {
