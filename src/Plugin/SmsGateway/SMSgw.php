@@ -14,7 +14,17 @@ use Drupal\sms\Message\SmsDeliveryReport;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
+/**
+ * @SmsGateway(
+ *   id = "smsgw",
+ *   label = @Translation("smsgw"),
+ *   outgoing_message_max_recipients = 1,
+ *   credit_balance_available = TRUE
+ *   reports_push = TRUE,
+ *   incoming = FALSE,
+ *   incoming_route = FALSE
+ * )
+ */
 class SMSgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
 
 
