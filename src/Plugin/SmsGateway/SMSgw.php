@@ -21,9 +21,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("SMSgw Gateway"),
  *   outgoing_message_max_recipients = 1,
  *   credit_balance_available = TRUE
- *   reports_push = TRUE,
- *   incoming = FALSE,
- *   incoming_route = FALSE
  * )
  */
 class SMSgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterface {
@@ -61,16 +58,7 @@ class SMSgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterf
     $form['sms_smsgw']['help'] = [
       '#type'  => 'html_tag',
       '#tag'   => 'p',
-      '#value' => $this->t('To get your Sender ID, User, and Password information, Create an account here: <a href="https://www.smsgw.net">https://www.smsgw.net</a>.'),
-    ];
-
-    $form['sms_smsgw']['strTagName'] = [
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Sender ID'),
-      '#default_value' => $config['strTagName'],
-      '#description'   => t('The sender name of your SMSgw.net account.'),
-      '#placeholder'   => 'XXXXXXXXXXXX',
-      '#required'      => TRUE,
+      '#value' => $this->t('Create an account here: <a href="https://www.smsgw.net">https://www.smsgw.net</a>.'),
     ];
 
     $form['sms_smsgw']['strUserName'] = [
@@ -88,6 +76,16 @@ class SMSgw extends SmsGatewayPluginBase implements ContainerFactoryPluginInterf
       '#description'   => t('The password of your SMSgw.net account.'),
       '#required'      => TRUE,
     ];
+
+    $form['sms_smsgw']['strTagName'] = [
+      '#type'          => 'textfield',
+      '#title'         => $this->t('Sender ID'),
+      '#default_value' => $config['strTagName'],
+      '#description'   => t('The sender name of your SMSgw.net account.'),
+      '#placeholder'   => 'XXXXXXXXXXXX',
+      '#required'      => TRUE,
+    ];
+
 
     return $form;
   }
