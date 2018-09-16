@@ -14,6 +14,7 @@ use Drupal\sms\Message\SmsDeliveryReport;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
 /**
  * This plugin handles sending SMSes through most GET & POST based SMS Gateways.
  * @SmsGateway(
